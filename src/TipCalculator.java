@@ -1,11 +1,11 @@
 public class TipCalculator {
     private int numPeople;
     private double billBeforeTip;
-    private double percentTip;
+    private int percentTip;
 
-    public TipCalculator(int people, double tipPercentage) {
-        int numPeople = people;
-        double percentTip = tipPercentage;
+    public TipCalculator(int numPeople, int percentTip) {
+        this.numPeople = numPeople;
+        this.percentTip = percentTip;
         double billBeforeTip = 0.0;
     }
 
@@ -13,7 +13,7 @@ public class TipCalculator {
         return billBeforeTip;
     }
 
-    public double getTipPercentage() {
+    public int getTipPercentage() {
         return percentTip;
     }
 
@@ -22,7 +22,7 @@ public class TipCalculator {
     }
 
     public double tipAmount(){
-        return billBeforeTip*(percentTip/100);
+        return (double)billBeforeTip*percentTip/100;
     }
 
     public double totalBill(){
@@ -30,10 +30,14 @@ public class TipCalculator {
     }
 
     public double perPersonTipAmount() {
-        return billBeforeTip / numPeople;
+        return tipAmount() / numPeople;
     }
 
+    public double perPersonCostBeforeTip(){
+        return billBeforeTip/numPeople;
+    }
 
-
-
+    public double perPersonTotalCost(){
+        return totalBill()/numPeople;
+    }
 }
